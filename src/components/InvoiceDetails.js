@@ -4,6 +4,10 @@ import './InvoiceDetails.css'; // Import your custom CSS file
 
 function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
 
+    function handlePrint() {
+        window.print(); // Trigger the browser's print dialog
+    }
+
     document.addEventListener("contextmenu", function (e) {
         e.preventDefault(); // Prevent the default right-click context menu
     });
@@ -34,7 +38,8 @@ function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
             <div class="row">
                 <div className="col">
                     <span><strong>Invoice Number:</strong> {invoiceData.InvoiceNumber}</span> <br />
-                    <span><strong>Invoice Date:</strong> {invoiceData.InvoiceDate}</span>
+                    <span><strong>Invoice Date:</strong> {invoiceData.InvoiceDate}</span><br /><br />
+                    <button className='btn btn-primary d-print-none rounded' onClick={handlePrint}>Print</button>
                 </div>
 
                 <div className="col">
@@ -47,8 +52,7 @@ function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
 
             <hr />
 
-            <table className="table table-bordered table-responsive">
-                {/* <table className="table table-bordered table-hover fs-sm"> */}
+            <table className="table table-bordered table-responsive table-sm">
                 <thead>
                     <tr>
                         <th scope="col">Sr No</th>
