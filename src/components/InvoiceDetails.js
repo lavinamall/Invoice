@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './InvoiceDetails.css'; // Import your custom CSS file
 
-function InvoiceDetails({ invoiceData, companyDetails }) {
+function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
 
     document.addEventListener("contextmenu", function (e) {
         e.preventDefault(); // Prevent the default right-click context menu
@@ -20,10 +20,10 @@ function InvoiceDetails({ invoiceData, companyDetails }) {
     return (
         <div className='container invoice-details my-3 mx-0'>
             <div class="row text-center">
-                <h2>{companyDetails.CompanyName}</h2>
+                <h2>{CompanyName}</h2>
                 <small>
                     <address style={{ whiteSpace: 'pre-line' }}>
-                        {companyDetails.CompanyAddress}
+                        {CompanyAddress}
                     </address>
                 </small>
                 <small>Tax Invoice</small>

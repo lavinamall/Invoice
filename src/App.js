@@ -8,10 +8,8 @@ function App() {
 
   const [invoiceData, setInvoiceData] = useState();
 
-  const [companyDetails, setCompanyDetails] = useState({
-    CompanyName: 'The Heritage Divine',
-    CompanyAddress: 'D 702 Marwar Appartments Sector 14, Chopasani Housing Board \n Jodhpur, Rajasthan 342008 \nGSTIN:08AATFT8421D1ZV'
-  });
+  const CompanyName = 'The Heritage Divine';
+  const CompanyAddress = 'D 702 Marwar Appartments Sector 14, Chopasani Housing Board \n Jodhpur, Rajasthan 342008 \nGSTIN:08AATFT8421D1ZV';
 
   const handleFormSubmit = (formData) => {
     setInvoiceData(formData);
@@ -26,7 +24,7 @@ function App() {
     <div className='container'>
       {showInvoice ? (
         <div>
-          <InvoiceDetails invoiceData={invoiceData} companyDetails={companyDetails} />
+          <InvoiceDetails invoiceData={invoiceData} CompanyName={CompanyName} CompanyAddress={CompanyAddress} />
         </div>
       ) : (
         <InvoiceForm onFormSubmit={handleFormSubmit} />
