@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import InvoiceForm from './components/InvoiceForm';
+import InvoiceDetails from './components/InvoiceDetails';
 
 function App() {
+  const [showInvoice, setShowInvoice] = useState(false);
+
+  const [invoiceData, setInvoiceData] = useState();
+
+  const [companyDetails, setCompanyDetails] = useState({
+    CompanyName: 'The Heritage Divine',
+    CompanyAddress: 'D 702 Marwar Appartments Sector 14, Chopasani Housing Board \n Jodhpur, Rajasthan 342008 \nGSTIN:08AATFT8421D1ZV'
+  });
+
+  const handleFormSubmit = (formData) => {
+    setInvoiceData(formData);
+    setShowInvoice(true);
+  };
+
+  const handleGoBack = () => {
+    setShowInvoice(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      {showInvoice ? (
+        <div>
+          <InvoiceDetails invoiceData={invoiceData} companyDetails={companyDetails} />
+        </div>
+      ) : (
+        <InvoiceForm onFormSubmit={handleFormSubmit} />
+      )}
     </div>
   );
 }
