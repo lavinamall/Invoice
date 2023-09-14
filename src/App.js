@@ -16,10 +16,6 @@ function App() {
     setShowInvoice(true);
   };
 
-  const handleGoBack = () => {
-    setShowInvoice(false);
-  };
-
   return (
     <div className='container'>
       {showInvoice ? (

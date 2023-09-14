@@ -102,10 +102,20 @@ function InvoiceForm({ onFormSubmit }) {
     };
 
     const removeItem = (itemIndex) => {
-        const updatedInvoiceData = { ...invoiceData };
-        updatedInvoiceData.ItemDescriptions.splice(itemIndex, 1);
-        setInvoiceData(updatedInvoiceData);
+        const updatedItems = [...invoiceData.ItemDescriptions];
+        const removedItem = updatedItems.splice(itemIndex, 1)[0];
+
+        // Calculate the new TotalAmount by subtracting the removed item's Amount and TaxAmount
+        const newTotalAmount =
+            invoiceData.TotalAmount - removedItem.Amount - removedItem.TaxAmount;
+
+        setInvoiceData({
+            ...invoiceData,
+            ItemDescriptions: updatedItems,
+            TotalAmount: newTotalAmount,
+        });
     };
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
