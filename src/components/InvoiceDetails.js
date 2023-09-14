@@ -4,6 +4,10 @@ import './InvoiceDetails.css'; // Import your custom CSS file
 
 function InvoiceDetails({ invoiceData, companyDetails }) {
 
+    document.addEventListener("contextmenu", function (e) {
+        e.preventDefault(); // Prevent the default right-click context menu
+    });
+
     function formatCurrency(amount) {
         const formatter = new Intl.NumberFormat('en-IN', {
             style: 'currency',
@@ -12,7 +16,6 @@ function InvoiceDetails({ invoiceData, companyDetails }) {
         });
         return formatter.format(amount);
     }
-
 
     return (
         <div className='container invoice-details my-3 mx-0'>
@@ -77,7 +80,7 @@ function InvoiceDetails({ invoiceData, companyDetails }) {
                     ))}
                 </tbody>
             </table>
-            <div className="mt-3 bg-light offset-md-9 fs-4">
+            <div className="mt-3 bg-light offset-md-9 fs-6 read-only">
                 <p><strong>Total Amount:</strong> {formatCurrency(invoiceData.TotalAmount)}</p>
             </div>
         </div>
