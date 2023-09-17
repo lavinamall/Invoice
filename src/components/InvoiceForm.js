@@ -106,7 +106,7 @@ function InvoiceForm({ onFormSubmit }) {
         <div className="container mt-5">
             <form onSubmit={handleSubmit}>
                 <div className='row'>
-                    <div className='col-lg-4 border rounded'>
+                    <div className='col-lg-4'>
                         <strong className='text-center m-1'>Client Details</strong>
                         <hr />
                         <div className="col mb-3">
@@ -302,12 +302,6 @@ function InvoiceForm({ onFormSubmit }) {
                                 <hr />
                             </div>
                         ))}
-                        <button type="button" className="btn btn-primary" onClick={addItem}>
-                            Add Item
-                        </button>
-                        <button type="submit" className="btn btn-primary ms-md-3">
-                            Submit
-                        </button>
 
                         <div className="offset-md-7 mb-3">
                             <label htmlFor="TotalAmount" className="form-label">
@@ -321,6 +315,15 @@ function InvoiceForm({ onFormSubmit }) {
                                 value={invoiceData.TotalAmount}
                                 onChange={(e) => handleInputChange(e)}
                             />
+                        </div>
+
+                        <div className="d-flex flex-md-row align-items-start align-items-md-center my-3">
+                            <button type="button" className="btn btn-primary mx-2 mb-md-0 me-md-3" onClick={addItem}>
+                                Add Item
+                            </button>
+                            <button type="submit" className="btn btn-primary">
+                                Generate Invoice
+                            </button>
                         </div>
 
                     </div>
