@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'font-awesome/css/font-awesome.css';
 
 function InvoiceForm({ onFormSubmit }) {
     const [invoiceData, setInvoiceData] = useState({
@@ -21,27 +22,6 @@ function InvoiceForm({ onFormSubmit }) {
         ],
         TotalAmount: 0,
     });
-
-    // const [invoiceData, setInvoiceData] = useState({
-    //     InvoiceNumber: 'INV-1',
-    //     InvoiceDate: getCurrentDate(),
-    //     ClientName: 'Lavina Mall',
-    //     ClientAddress: 'Mahima Kunj, 4th Lane Shakti Nagar Paota C Road, Jodhpur, Rajasthan',
-    //     ClientPhone: '+91-9769883785',
-    //     ItemDescriptions: [
-    //         {
-    //             Description: 'Product',
-    //             Quantity: 10,
-    //             Amount: 0,
-    //             UnitPrice: 100,
-    //             TaxAmount: 0,
-    //             SGST: 9,
-    //             CGST: 9,
-    //             IGST: 0,
-    //         },
-    //     ],
-    //     TotalAmount: 0,
-    // });
 
     function getCurrentDate() {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -131,6 +111,7 @@ function InvoiceForm({ onFormSubmit }) {
                         <hr />
                         <div className="col mb-3">
                             <label htmlFor="InvoiceNumber" className="form-label">
+                                <i class="me-2 fa fa-file-text-o text-primary"></i>
                                 Invoice Number:
                             </label>
                             <input
@@ -144,6 +125,7 @@ function InvoiceForm({ onFormSubmit }) {
                         </div>
                         <div className="col mb-3">
                             <label htmlFor="InvoiceDate" className="form-label">
+                                <i class="me-2 fa fa-calendar text-primary"></i>
                                 Invoice Date:
                             </label>
                             <input
@@ -157,6 +139,7 @@ function InvoiceForm({ onFormSubmit }) {
                         </div>
                         <div className="col mb-3">
                             <label htmlFor="ClientName" className="form-label">
+                                <i class="me-2 fa fa-user text-primary"></i>
                                 Client Name:
                             </label>
                             <input
@@ -170,6 +153,7 @@ function InvoiceForm({ onFormSubmit }) {
                         </div>
                         <div className="col mb-3">
                             <label htmlFor="ClientPhone" className="form-label">
+                                <i class="me-2 fa fa-phone text-primary"></i>
                                 Client Phone:
                             </label>
                             <input
@@ -183,7 +167,7 @@ function InvoiceForm({ onFormSubmit }) {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="ClientAddress" className="form-label">
-                                Client Address:
+                                <i class="me-2 fa fa-map-marker text-primary"></i>Client Address:
                             </label>
                             <textarea
                                 rows={5}
