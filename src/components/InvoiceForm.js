@@ -18,6 +18,7 @@ function InvoiceForm({ onFormSubmit }) {
                 SGST: 0,
                 CGST: 0,
                 IGST: 0,
+                ItemTotalAmount: 0,
             },
         ],
         TotalAmount: 0,
@@ -53,6 +54,9 @@ function InvoiceForm({ onFormSubmit }) {
             const amount = parseFloat(updatedInvoiceData.ItemDescriptions[itemIndex].Amount);
             const taxAmount = (igst / 100) * amount;
             updatedInvoiceData.ItemDescriptions[itemIndex].TaxAmount = taxAmount.toFixed(2);
+
+            // Calculate ItemTotalAmount
+            updatedInvoiceData.ItemDescriptions[itemIndex].ItemTotalAmount = (parseFloat(taxAmount) + parseFloat(amount)).toFixed(2);
         } else {
             updatedInvoiceData[name] = value;
         }
@@ -77,6 +81,7 @@ function InvoiceForm({ onFormSubmit }) {
             SGST: 0,
             CGST: 0,
             IGST: 0,
+            ItemTotalAmount: 0,
         });
         setInvoiceData(updatedInvoiceData);
     };

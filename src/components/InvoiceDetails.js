@@ -85,6 +85,7 @@ function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
                         <th rowSpan={2} scope="col">Amount</th>
                         <th className='table-fit text-center' scope="col" colSpan={3}>Tax (%)</th>
                         <th rowSpan={2} scope="col">Tax Amount</th>
+                        <th rowSpan={2} scope="col">Total Amount</th>
 
                     </tr>
                     <tr>
@@ -105,12 +106,13 @@ function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
                             <td className='text-center'>{item.CGST}%</td>
                             <td className='text-center'>{item.IGST}%</td>
                             <td>{formatCurrency(item.TaxAmount)}</td>
+                            <td>{formatCurrency(item.ItemTotalAmount)}</td>
 
                         </tr>
                     ))}
                     <tr>
-                        <td colSpan={4}></td>
-                        <td colSpan={5} className='text-dark'>
+                        <td colSpan={9}></td>
+                        <td colSpan={1} className='text-dark'>
                             <strong>Total Amount: {' ' + formatCurrency(invoiceData.TotalAmount)}</strong>
                         </td>
                     </tr>
