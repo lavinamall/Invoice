@@ -23,23 +23,42 @@ function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
 
     return (
         <div className='container invoice-details my-3 mx-0'>
-            <div class="row text-center">
+            <div className="row text-center">
                 <h2>{CompanyName}</h2>
                 <small>
-                    <address style={{ whiteSpace: 'pre-line' }}>
+                    <address style={{ whiteSpace: 'pre-line', fontSize: '11px' }}>
                         {CompanyAddress}
                     </address>
                 </small>
-                <small>Tax Invoice</small>
+
+                <table class='table table-bordered table-responsive table-sm' style={{ fontSize: '12px' }}>
+                    <thead>
+                        <tr>
+                            <th>Account Holder</th>
+                            <th>Account Number</th>
+                            <th>Bank Name</th>
+                            <th>IFSC Code</th>
+                            <th>Branch</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>The Heritage Divine</td>
+                            <td>259929939374</td>
+                            <td>IndusInd Bank</td>
+                            <td>INDB0000453</td>
+                            <td>Boronada, Jodhpur</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr className='mb-1' />
             </div>
 
-            <hr />
-
-            <div class="row">
+            <div className="row" style={{ fontSize: '12px' }}>
                 <div className="col">
                     <span><strong>Invoice Number:</strong> {invoiceData.InvoiceNumber}</span> <br />
                     <span><strong>Invoice Date:</strong> {invoiceData.InvoiceDate}</span><br /><br />
-                    <button className='btn btn-primary d-print-none rounded' onClick={handlePrint}>Print</button>
                 </div>
 
                 <div className="col">
@@ -48,19 +67,30 @@ function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
                     <span><strong>Address:</strong> {invoiceData.ClientAddress}</span><br />
                     <span><strong>Phone:</strong> {invoiceData.ClientPhone}</span><br />
                 </div>
+
+                <div className='col'>
+                    <button className='btn btn-primary d-print-none rounded' onClick={handlePrint}>Print</button>
+                </div>
             </div>
 
             <hr />
 
-            <table className="table table-bordered table-responsive table-sm">
+            <table className="table table-bordered table-sm table-responsive text-center" style={{ fontSize: '11px' }}>
                 <thead>
                     <tr>
-                        <th scope="col">Sr No</th>
-                        <th scope="col">Product Description</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Unit Price</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Tax</th>
+                        <th rowSpan={2} scope="col">Sr. No</th>
+                        <th rowSpan={2} scope="col">Product</th>
+                        <th rowSpan={2} scope="col">Quantity</th>
+                        <th rowSpan={2} scope="col">Unit Price</th>
+                        <th rowSpan={2} scope="col">Amount</th>
+                        <th className='table-fit text-center' scope="col" colSpan={3}>Tax (%)</th>
+                        <th rowSpan={2} scope="col">Tax Amount</th>
+
+                    </tr>
+                    <tr>
+                        <th className='text-center'>CGST</th>
+                        <th className='text-center'>GGST</th>
+                        <th className='text-center'>IGST</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -71,22 +101,24 @@ function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
                             <td>{item.Quantity}</td>
                             <td>{formatCurrency(item.UnitPrice)}</td>
                             <td>{formatCurrency(item.Amount)}</td>
-                            <td>
-                                <ul className="list-unstyled">
-                                    <li><strong>SGST:</strong> {item.SGST}%</li>
-                                    <li><strong>CGST:</strong> {item.CGST}%</li>
-                                    <li><strong>IGST:</strong> {item.IGST}%</li>
-                                    <li><strong>Tax Amount:</strong> {formatCurrency(item.TaxAmount)}</li>
-                                </ul>
-                            </td>
+                            <td className='text-center'>{item.SGST}%</td>
+                            <td className='text-center'>{item.CGST}%</td>
+                            <td className='text-center'>{item.IGST}%</td>
+                            <td>{formatCurrency(item.TaxAmount)}</td>
 
                         </tr>
                     ))}
+                    <tr>
+                        <td colSpan={4}></td>
+                        <td colSpan={5} className='text-dark'>
+                            <strong>Total Amount: {' ' + formatCurrency(invoiceData.TotalAmount)}</strong>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-            <div className="mt-3 bg-light offset-md-9 fs-6 read-only">
+            {/* <div className="mt-3 bg-light offset-md-9 fs-6 read-only" style={{ fontSize: '12px' }}>
                 <p><strong>Total Amount:</strong> {formatCurrency(invoiceData.TotalAmount)}</p>
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -52,7 +52,7 @@ function InvoiceForm({ onFormSubmit }) {
             // Calculate TaxAmount
             const amount = parseFloat(updatedInvoiceData.ItemDescriptions[itemIndex].Amount);
             const taxAmount = (igst / 100) * amount;
-            updatedInvoiceData.ItemDescriptions[itemIndex].TaxAmount = taxAmount;
+            updatedInvoiceData.ItemDescriptions[itemIndex].TaxAmount = taxAmount.toFixed(2);
         } else {
             updatedInvoiceData[name] = value;
         }
@@ -111,7 +111,7 @@ function InvoiceForm({ onFormSubmit }) {
                         <hr />
                         <div className="col mb-3">
                             <label htmlFor="InvoiceNumber" className="form-label">
-                                <i class="me-2 fa fa-file-text-o text-primary"></i>
+                                <i className="me-2 fa fa-file-text-o text-primary"></i>
                                 Invoice Number:
                             </label>
                             <input
@@ -125,7 +125,7 @@ function InvoiceForm({ onFormSubmit }) {
                         </div>
                         <div className="col mb-3">
                             <label htmlFor="InvoiceDate" className="form-label">
-                                <i class="me-2 fa fa-calendar text-primary"></i>
+                                <i className="me-2 fa fa-calendar text-primary"></i>
                                 Invoice Date:
                             </label>
                             <input
@@ -139,7 +139,7 @@ function InvoiceForm({ onFormSubmit }) {
                         </div>
                         <div className="col mb-3">
                             <label htmlFor="ClientName" className="form-label">
-                                <i class="me-2 fa fa-user text-primary"></i>
+                                <i className="me-2 fa fa-user text-primary"></i>
                                 Client Name:
                             </label>
                             <input
@@ -153,7 +153,7 @@ function InvoiceForm({ onFormSubmit }) {
                         </div>
                         <div className="col mb-3">
                             <label htmlFor="ClientPhone" className="form-label">
-                                <i class="me-2 fa fa-phone text-primary"></i>
+                                <i className="me-2 fa fa-phone text-primary"></i>
                                 Client Phone:
                             </label>
                             <input
@@ -167,7 +167,7 @@ function InvoiceForm({ onFormSubmit }) {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="ClientAddress" className="form-label">
-                                <i class="me-2 fa fa-map-marker text-primary"></i>Client Address:
+                                <i className="me-2 fa fa-map-marker text-primary"></i>Client Address:
                             </label>
                             <textarea
                                 rows={5}
