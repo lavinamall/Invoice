@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import InvoiceForm from './components/InvoiceForm';
 import InvoiceDetails from './components/InvoiceDetails';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 
 function App() {
   const [showInvoice, setShowInvoice] = useState(false);
@@ -17,13 +19,17 @@ function App() {
   };
 
   return (
-    <div className='container'>
+    <div className='container-fluid'>
       {showInvoice ? (
         <div>
           <InvoiceDetails invoiceData={invoiceData} CompanyName={CompanyName} CompanyAddress={CompanyAddress} />
         </div>
       ) : (
-        <InvoiceForm onFormSubmit={handleFormSubmit} />
+        <>
+          <Header CompanyName={CompanyName} />
+          <InvoiceForm onFormSubmit={handleFormSubmit} />
+          <Footer />
+        </>
       )}
     </div>
   );
