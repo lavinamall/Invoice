@@ -22,7 +22,7 @@ function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
     }
 
     return (
-        <div className='container invoice-details my-3 mx-0'>
+        <div className='container-fluid invoice-details my-3 mx-0'>
             <div className="row text-center">
                 <h2>{CompanyName}</h2>
                 <small>

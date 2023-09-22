@@ -21,7 +21,7 @@ function App() {
   return (
     <div className='container-fluid'>
       {showInvoice ? (
-        <div>
+        <div className='container-fluid'>
           <InvoiceDetails invoiceData={invoiceData} CompanyName={CompanyName} CompanyAddress={CompanyAddress} />
         </div>
       ) : (

@@ -108,9 +108,9 @@ function InvoiceForm({ onFormSubmit }) {
     };
 
     return (
-        <div className="container mt-5">
+        <div className="container-fluid mt-5">
             <form onSubmit={handleSubmit}>
-                <div className='row'>
+                <div className='row d-flex mx-auto align-content-center justify-content-center'>
                     <div className='col-lg-4'>
                         <strong className='text-center m-1'>Client Details</strong>
                         <hr />
