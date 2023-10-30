@@ -72,7 +72,7 @@ function InvoiceForm({ onFormSubmit }) {
         if (updatedInvoiceData.Discount)
             discountValue = (parseFloat(updatedInvoiceData.Discount) / 100) * parseFloat(updatedInvoiceData.TotalAmount);
 
-        updatedInvoiceData.TotalAmount = (totalAmount - discountValue).toFixed(2); // Limit totalAmount to 2 decimal places
+        updatedInvoiceData.TotalAmount = Math.floor((totalAmount - discountValue).toFixed(2)); // Limit totalAmount to 2 decimal places
 
         setInvoiceData(updatedInvoiceData);
     };

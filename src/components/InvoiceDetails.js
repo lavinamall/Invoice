@@ -110,6 +110,12 @@ function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
                     <tr>
                         <td colSpan={9}></td>
                         <td colSpan={1} className='text-dark'>
+                            <strong>Discount: {invoiceData.Discount}%</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colSpan={9}></td>
+                        <td colSpan={1} className='text-dark'>
                             <strong>Total Amount: {' ' + formatCurrency(invoiceData.TotalAmount)}</strong>
                         </td>
                     </tr>
