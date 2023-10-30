@@ -31,7 +31,7 @@ function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
                     </address>
                 </small>
 
-                <table class='table table-bordered table-responsive table-sm' style={{ fontSize: '12px' }}>
+                <table className='table table-bordered table-responsive table-sm' style={{ fontSize: '12px' }}>
                     <thead>
                         <tr>
                             <th>Account Holder</th>
@@ -59,10 +59,7 @@ function InvoiceDetails({ invoiceData, CompanyName, CompanyAddress }) {
                 <div className="col">
                     <span><strong>Invoice Number:</strong> {invoiceData.InvoiceNumber}</span> <br />
                     <span><strong>Invoice Date:</strong> {invoiceData.InvoiceDate}</span><br /><br />
-                </div>
-
-                <div className="col">
-                    <strong>Billing To</strong><br />
+                    <strong>Billing to: </strong>
                     <span><strong> {invoiceData.ClientName}</strong></span><br />
                     <span><strong>Address:</strong> {invoiceData.ClientAddress}</span><br />
                     <span><strong>Phone:</strong> {invoiceData.ClientPhone}</span><br />
