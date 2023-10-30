@@ -21,6 +21,7 @@ function InvoiceForm({ onFormSubmit }) {
                 ItemTotalAmount: 0,
             },
         ],
+        Discount: 0,
         TotalAmount: 0,
     });
 
@@ -66,7 +67,12 @@ function InvoiceForm({ onFormSubmit }) {
             return total + parseFloat(item.Amount) + parseFloat(item.TaxAmount);
         }, 0);
 
-        updatedInvoiceData.TotalAmount = totalAmount.toFixed(2); // Limit totalAmount to 2 decimal places
+        // Calculate discount
+        let discountValue = 0
+        if (updatedInvoiceData.Discount)
+            discountValue = (parseFloat(updatedInvoiceData.Discount) / 100) * parseFloat(updatedInvoiceData.TotalAmount);
+
+        updatedInvoiceData.TotalAmount = (totalAmount - discountValue).toFixed(2); // Limit totalAmount to 2 decimal places
 
         setInvoiceData(updatedInvoiceData);
     };
@@ -307,6 +313,20 @@ function InvoiceForm({ onFormSubmit }) {
                                 <hr />
                             </div>
                         ))}
+
+                        <div className="offset-md-7 mb-3">
+                            <label htmlFor="Discount" className="form-label">
+                                <strong>Discount (%)</strong>
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="Discount"
+                                name="Discount"
+                                value={invoiceData.Discount}
+                                onChange={(e) => handleInputChange(e)}
+                            />
+                        </div>
 
                         <div className="offset-md-7 mb-3">
                             <label htmlFor="TotalAmount" className="form-label">
